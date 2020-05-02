@@ -20,10 +20,10 @@ run following in terminal
 
 now go to http://localhost:8000/
 
-following are the endpoints
-    http://localhost:8000/home to get worldwide stats
-    http://localhost:8000/countrynames to get names of all countries for which we have data
-    http://localhost:8000/country/{countryname} to get country stats
+following are the endpoints 
+    http://localhost:8000/home to get worldwide stats   
+    http://localhost:8000/countrynames to get names of all countries for which we have data 
+    http://localhost:8000/country/{countryname} to get country stats    
     http://localhost:8000/all to get all the stats
 
 use updateDB.py to update the database
