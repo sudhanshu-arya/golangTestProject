@@ -10,7 +10,7 @@
 - mysql> FLUSH PRIVILEGES;    
 - Now the root user is setup to connect to the MySQL shell through a secure password.
 
-### change user and password values to your MySQL username and password in trial/dao.go and databaseconfig.py
+### change user and password values to your MySQL username and password in 'trial/dao.go' and 'databaseconfig.py'
 
 ## run following in terminal
 - python3 populateDB.py
@@ -18,7 +18,7 @@
 - go build -o server *.go
 - ./server
 
-## now go to http://localhost:8000/
+### now go to http://localhost:8000/
 
 ## following are the endpoints 
 - http://localhost:8000/home to get worldwide stats   
