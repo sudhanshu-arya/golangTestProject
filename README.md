@@ -1,14 +1,14 @@
 
-installing the packages that are used   
-    go get -u github.com/gorilla/mux    
-    go get -u github.com/go-sql-driver/mysql
+installing the packages that are used
+	go get -u github.com/gorilla/mux
+	go get -u github.com/go-sql-driver/mysql
 
-installing MySQL (skip if you already have MySQL)   
-    sudo apt install mysql-server   
-    sudo mysql_secure_installation  
-    sudo mysql  
-    mysql> FLUSH PRIVILEGES;    
-    Now the root user is setup to connect to the MySQL shell through a secure password.
+installing MySQL (skip if you already have MySQL)
+	sudo apt install mysql-server   
+	sudo mysql_secure_installation  
+	sudo mysql  
+	mysql> FLUSH PRIVILEGES;    
+	Now the root user is setup to connect to the MySQL shell through a secure password.
 
 change user and password values to your MySQL username and password in trial/dao.go and databaseconfig.py
 
