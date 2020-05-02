@@ -22,7 +22,7 @@
 
 ## following are the endpoints 
 - http://localhost:8000/home to get worldwide stats   
-- http://localhost:8000/countrynames to get names of all countries for which we have data 
+- http://localhost:8000/countrynames to get names of all countries
 - http://localhost:8000/country/{countryname} to get country stats    
 - http://localhost:8000/all to get all the stats
 
