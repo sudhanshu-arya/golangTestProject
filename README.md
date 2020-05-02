@@ -26,4 +26,4 @@
 - http://localhost:8000/country/{countryname} to get country stats    
 - http://localhost:8000/all to get all the stats
 
-## use updateDB.py to update the database
+## use 'updateDB.py' to update the database
