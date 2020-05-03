@@ -75,20 +75,25 @@ finally:
             ##----------------TABLE IS ALREADY PRESENT---------------------
             
             print("given table already exist ")
+            print("Connected to table:",cfg.mysql["table_name"])
 
             ##----------------FINDING LATEST DATA--------------------------
             
             max_query="""SELECT MAX(Date) FROM """+cfg.mysql["table_name"]+""";"""
             cursor.execute(max_query)
             last_date = cursor.fetchone()
-            dateStr = last_date[0].strftime("%Y %m %d ")           
-            print('Latest Date : ' ,dateStr)
+            if last_date[0] is None:
+                my_string= "2016-06-11"
+                last_date = (dt.strptime(my_string, "%Y-%m-%d").date(),)
+            else:
+                dateStr = last_date[0].strftime("%Y-%m-%d ")           
+                print('Latest Date : ' ,dateStr)
             
         else:
-            ##-----------TABLE IS NOT PRESENT CREATING TABLE---------------
+            ##-----------TABLE IS NOT PRESENT!! CREATING TABLE---------------
 
             print("given table does not exist")
-            create_table="""CREATE TABLE CountryWiseData
+            create_table="""CREATE TABLE """+cfg.mysql["table_name"]+"""
                             (CountryName varchar(255),
                              ProvinceName varchar(255),
                              ActiveCases varchar(255),
@@ -97,13 +102,12 @@ finally:
                              Date date)"""
             
             cursor.execute(create_table)
-            print("Table Created")
+            print("Connected to table:",cfg.mysql["table_name"])
 
-            ##-------------SETTING AN OLD DATE IN LAST_DATE----------------
+            ##----SETTING AN OLD DATE IN LAST_DATE FOR FIRS TIME ENTRY------
             
             my_string= "2016-06-11"
             last_date = (dt.strptime(my_string, "%Y-%m-%d").date(),)
-            print(dt.strptime(my_string, "%Y-%m-%d").date())
 
 
 
@@ -112,7 +116,7 @@ finally:
             
             
         print("Inserting Data")
-        insert_query = """INSERT INTO CountryWiseData 
+        insert_query = """INSERT INTO """+cfg.mysql["table_name"]+""" 
                           (CountryName,ProvinceName,ActiveCases,
                            TotalRecovered,TotalDeaths,Date)
                            VALUES (%s, %s, %s, %s, %s, %s)"""
@@ -123,7 +127,7 @@ finally:
             
             date=(x['Date'])
             date=date.split('T')
-            if date[0]>last_date[0].strftime("%Y/%m/%d"):
+            if date[0]>last_date[0].strftime("%Y-%m-%d"):
                 country=x['Country']
                 province=x['Province']
                 city=x['City']
@@ -135,7 +139,7 @@ finally:
                 count=count+1
 
                 
-        print("No. Of Rows Affeced:%s"%(count))
+        print("No. Of Rows Affeced:",count)
 
         connection.commit()
 
